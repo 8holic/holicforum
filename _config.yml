@@ -3,7 +3,7 @@ collections:
   general_posts:
     output: true
     permalink: /general/:slug/
-  newst:
+  news:
     output: true
     permalink: /news/:slug/
   hidden_posts:

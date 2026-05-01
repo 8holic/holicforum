@@ -4,6 +4,7 @@ author: "CommunityMod_Ryan"
 date: 2007-10-03
 layout: post
 pin: false
+rank: "Community Manager"
 ---
 
 Hello, FrontierStory adventurers!
@@ -26,10 +27,12 @@ PLACEHOLDER
 PLACEHOLDER
 
 **Hint #4 (Thief):**  
-PLACEHOLDER
+<img src="/assets/images/6anvthief.png" alt="Thief hint image" style="max-width: 100%;"><br>
+*A true thief looks under the surface*
 
 **Hint #5 (Gunslinger):**  
-PLACEHOLDER
+The Gunslinger has long left for the elements
+#MQRPCX1
 
 ---
 

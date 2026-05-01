@@ -5,6 +5,7 @@ date: 2007-04-03
 layout: post
 pin: true
 signature: "Forum Administrator – Read this before trading!"
+rank: "Administrator"
 ---
 
 ## Welcome to FrontierStory
