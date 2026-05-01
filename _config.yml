@@ -1,3 +1,5 @@
+baseurl: "/holicforum"
+url: "https://8holic.github.io"
 title: "Frontier Tavern – Community Forums"
 collections:
   general_posts:
