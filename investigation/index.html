@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Investigation Portal – Frontier Tavern</title>
+  <link rel="stylesheet" href="css/investigation.css">
+</head>
+<body>
+<div class="chat-container">
+  <div class="session-bar">
+    <div>
+      <label>Session:</label>
+      <select id="sessionSelect">
+        <option>Loading...</option>
+      </select>
+    </div>
+    <div>
+      <input type="password" id="casePassword" placeholder="Case code">
+      <button id="unlockBtn">Unlock</button>
+      <span id="unlockStatus"></span>
+    </div>
+  </div>
+  <div class="chat-log" id="chatLog"></div>
+  <div class="input-area">
+    <input type="text" id="playerInput" placeholder="Type your answer..." disabled>
+    <button id="sendBtn" disabled>Send</button>
+  </div>
+</div>
+
+<!-- Load registry FIRST -->
+<script src="js/cases.js"></script>
+<!-- Then sessions (demo.js is always needed) -->
+<script src="js/sessions/demo.js"></script>
+<!-- Finally main logic -->
+<script src="js/main.js"></script>
+</body>
+</html>

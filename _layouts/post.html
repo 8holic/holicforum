@@ -1,0 +1,36 @@
+---
+layout: default
+---
+<article class="post">
+  <div class="post-header">
+    <h1>{{ page.title }}</h1>
+    <div class="meta">
+      Posted by <strong>{{ page.author }}</strong>
+      {% if page.rank %}
+        ({{ page.rank }})
+      {% else %}
+        (Junior Member)
+      {% endif %}
+      on {{ page.date | date: "%B %d, %Y at %I:%M %p" }}
+    </div>
+  </div>
+
+  <div class="post-content">
+    {{ content }}
+  </div>
+
+  <!-- InvisionFree signature block -->
+  <div class="signature">
+    {% if page.signature %}
+      {{ page.signature }}
+    {% else %}
+      -------------------<br>
+      Core 2 Duo @ 2.4GHz, 2GB RAM, GeForce 7900GT<br>
+      "Frags or die"
+    {% endif %}
+  </div>
+
+  <button type="button" class="fake-reply" onclick="alert('This forum is archived. Replies are disabled.');">
+    + Reply to Thread
+  </button>
+</article>

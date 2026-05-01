@@ -1,0 +1,32 @@
+---
+layout: default
+title: News & Announcements
+---
+
+<h1>News & Announcements</h1>
+
+{% if site.news == nil or site.news == empty %}
+  <p>No news posts yet. Check back later.</p>
+{% else %}
+
+<div class="thread-list">
+  {% assign pinned_posts = site.news | where: "pin", true | sort: "date" | reverse %}
+  {% assign normal_posts = site.news | where_exp: "post", "post.pin != true" | sort: "date" | reverse %}
+  
+  {% for post in pinned_posts %}
+    <div class="thread pinned">
+      <span class="sticky-icon">📌</span>
+      <h3><a href="{{ post.url | relative_url }}">{{ post.title }}</a></h3>
+      <div class="thread-meta">by {{ post.author | default: "Anonymous" }} – {{ post.date | date: "%b %d, %Y" }}</div>
+    </div>
+  {% endfor %}
+
+  {% for post in normal_posts %}
+    <div class="thread">
+      <h3><a href="{{ post.url | relative_url }}">{{ post.title }}</a></h3>
+      <div class="thread-meta">by {{ post.author | default: "Anonymous" }} – {{ post.date | date: "%b %d, %Y" }}</div>
+    </div>
+  {% endfor %}
+</div>
+
+{% endif %}
