@@ -30,7 +30,7 @@ Will you be the one taking hits for the team, or the shadow that eliminates enem
 
 ## START TODAY?
 
-The official game link is currently unavailable (under investigation). Check back later for updates.
+The official game link is down at the moment.
 
 ---
 

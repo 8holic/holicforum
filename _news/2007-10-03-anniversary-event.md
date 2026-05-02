@@ -21,13 +21,14 @@ We've reached our **6‑month anniversary** (the forum launched on April 3). To 
 The combined might of all the warriors weapon shall open the path
 
 **Hint #2 (Magician):**  
-PLACEHOLDER
+xerg obqi
+the 1st job is the common factor
 
 **Hint #3 (Archer):**  
 PLACEHOLDER
 
 **Hint #4 (Thief):**  
-<img src="/assets/images/6anvthief.png" alt="Thief hint image" style="max-width: 100%;"><br>
+<img src="{{ '/assets/images/6anvthief.png' | relative_url }}" alt="Thief hint image" style="max-width: 100%;">
 *A true thief looks under the surface*
 
 **Hint #5 (Gunslinger):**  

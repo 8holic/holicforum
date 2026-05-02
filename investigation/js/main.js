@@ -82,6 +82,7 @@ function addPost(sender, content, rank = null, delayMs = 0, isImage = false, img
       if (waitingForQuestion) {
         playerInput.disabled = false;
         sendBtn.disabled = false;
+        sessionSelect.disabled = false; 
       }
       resolve();
     };
@@ -89,6 +90,7 @@ function addPost(sender, content, rank = null, delayMs = 0, isImage = false, img
     if (delayMs > 0) {
       playerInput.disabled = true;
       sendBtn.disabled = true;
+      sessionSelect.disabled = true; 
       setTimeout(showPost, delayMs);
     } else {
       showPost();
@@ -179,6 +181,7 @@ function resetChat() {
   currentQuestionRank = null;
   playerInput.disabled = false;
   sendBtn.disabled = false;
+  sessionSelect.disabled = false; 
   advance();
 }
 
@@ -193,7 +196,7 @@ function advance() {
       const sender = step.sender || 'Admin';
       const rank = step.rank || null;
       addMessage(sender, step.text, rank, delay).then(() => {
-        currentStepIndex++;
+        currentStepIndex = step.nextStepIndex !== undefined ? step.nextStepIndex : currentStepIndex + 1;
         advance();
       });
       return;
@@ -224,6 +227,8 @@ function advance() {
     currentExpectedHash = null;
     currentQuestionSender = null;
     currentQuestionRank = null;
+    playerInput.disabled = false;
+    sendBtn.disabled = false;
   }
 }
 
@@ -239,8 +244,41 @@ async function handleAnswer(answer) {
   const normalized = answer.trim().toLowerCase();
 
   // Show player's answer
-  addMessage('You', answer, null, 0);
+  addMessage('You', escapeHtml(answer), null, 0);
 
+  // ========== NEW: Branching support (multiple answers, each jumps to different step) ==========
+  if (step.branches) {
+    let computedHash = null;
+    try {
+      const encoder = new TextEncoder();
+      const data = encoder.encode(normalized);
+      const hashBuffer = await crypto.subtle.digest('SHA-256', data);
+      const hashArray = Array.from(new Uint8Array(hashBuffer));
+      computedHash = hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
+    } catch (err) {
+      addMessage(currentQuestionSender || 'Admin', `Error: ${err.message}`, currentQuestionRank);
+      return;
+    }
+    const targetStepIndex = step.branches[computedHash];
+    if (targetStepIndex !== undefined) {
+      // Jump to the target step (could be a feedback message that returns later)
+      currentStepIndex = targetStepIndex;
+      waitingForQuestion = false;
+      currentExpectedHash = null;
+      currentQuestionSender = null;
+      currentQuestionRank = null;
+      advance();
+      return;
+    } else {
+      // No matching branch – show fail message and stay on same step
+      const failMsg = step.failMessage || 'Code not recognized.';
+      addMessage(currentQuestionSender || 'Admin', failMsg, currentQuestionRank);
+      return;
+    }
+  }
+  // ========== End of branching support ==========
+
+  // Original single‑hash logic (unchanged)
   let isCorrect = false;
   let computedHash = null;
   try {
@@ -256,7 +294,6 @@ async function handleAnswer(answer) {
   }
 
   if (isCorrect) {
-    // No success message – just advance
     const nextIndex = step.successNextStepIndex || currentStepIndex + 1;
     currentStepIndex = nextIndex;
     waitingForQuestion = false;
@@ -272,7 +309,6 @@ async function handleAnswer(answer) {
     addMessage(currentQuestionSender || 'Admin', failMsg, currentQuestionRank);
   }
 }
-
 // ------------------------------------------------------------------
 // Event listeners
 // ------------------------------------------------------------------

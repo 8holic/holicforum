@@ -1,0 +1,4 @@
+{% assign u = site.data.users[include.id] %}
+**{{ u.name }}** – {{ include.time }} SGT  
+Rank: {{ u.rank }} | Signature: "{{ u.signature }}"  
+> {{ include.msg }}

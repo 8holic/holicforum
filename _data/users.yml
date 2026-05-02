@@ -1,0 +1,52 @@
+1:
+  name: "ForumAdmin"
+  rank: "Administrator"
+  signature: "Read the rules"
+2:
+  name: "⭐CommunityMod_Ryan"
+  rank: "Moderator"
+  signature: "Keep discussions civil"
+3:
+  name: "PoleArmNewbie"
+  rank: "Regular"
+  signature: "pole-arm victim"
+4:
+  name: "John32"
+  rank: "Regular"
+  signature: "myjob"
+5:
+  name: "HelperGuy"
+  rank: "Veteran"
+  signature: "helper"
+6:
+  name: "WarriorMain"
+  rank: "Elite"
+  signature: "warrior main"
+7:
+  name: "LostNewb"
+  rank: "Newbie"
+  signature: "lost"
+8:
+  name: "CrankyVeteran"
+  rank: "Member"
+  signature: "Dark Knight main"
+9:
+  name: "TheoryCrafter"
+  rank: "Veteran"
+  signature: "theorycrafter"
+10:
+  name: "XXXDragonSlayerXXX"
+  rank: "Member"
+  signature: "rerolled"
+11:
+  name: "PatientGamer"
+  rank: "Elite"
+  signature: "patient gamer"
+12:
+  name: "YanIsMe"
+  rank: "Elite"
+  signature: "LOLOLOLOLO"
+13:
+  name: "HealingHands"
+  rank: "Elite"
+  signature: "Priest in both World"
