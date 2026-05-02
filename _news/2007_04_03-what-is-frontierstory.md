@@ -18,13 +18,13 @@ You start as an adventurer and can specialize into one of **five iconic classes*
 
 | Class | Role |
 |-------|------|
-| **Warrior** | High HP, strong melee attacks – frontline tank or damage dealer |
-| **Magician** | Elemental spells, area damage – controls the battlefield |
-| **Archer** | Ranged precision, critical hits – snipe from a distance |
-| **Thief** | Agile, high speed – striking from shadows or using deadly poisons |
-| **Gunslinger** | Gun and fist hybrid – versatility and style |
+| **Warrior** | Dominate the frontlines|
+| **Magician** | Cast powerful spells with magic|
+| **Archer** | Strike from afar with either precision or speed |
+| **Thief** | Strike from the shadows with high critical rate |
+| **Gunslinger** | Can engage the enemies at both range and melee|
 
-Each class has two **specializations** (e.g., Warrior: Knight vs. Berserker). Will you be the one taking hits for the team, or the shadow that eliminates enemies before they react? **You choose.**
+Will you be the one taking hits for the team, or the shadow that eliminates enemies before they react? **You choose.**
 
 ---
 

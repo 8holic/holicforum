@@ -17,8 +17,8 @@ We've reached our **6‑month anniversary** (the forum launched on April 3). To 
 
 ## Hints
 
-**Hint #1 (Warrior):**  
-PLACEHOLDER
+**Hint #1 (Warrior):**  SGSPWM 
+The combined might of all the warriors weapon shall open the path
 
 **Hint #2 (Magician):**  
 PLACEHOLDER
@@ -32,8 +32,7 @@ PLACEHOLDER
 
 **Hint #5 (Gunslinger):**  
 The Gunslinger has long left for the elements
-#MQRPCX1
-
+<!-- MQRPCX1 -->
 ---
 
-*Discussion happens in the [General megathread](../general/2007-10-03-anniversary-megathread).*
+*Discussion happens in the [General megathread](/holicforum/general/anniversary-megathread/).*
