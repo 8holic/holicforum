@@ -112,4 +112,4 @@ Use this space to:
 
 {% include comment id=9 time="Oct 5, 10:33" msg="Not telling you :) Both are solvable outside the game" %}
 
-{% include comment id=2 time="Oct 5, 18:00" msg="Moderator aka ID 2 Wow that is fast, as of 5 Oct all 100 codes has been claimed! Thank you for participating?" %}
+{% include comment id=2 time="Oct 5, 18:00" msg="Wow that is fast, as of 5 Oct all 100 codes has been claimed! Thank you for participating?" %}
