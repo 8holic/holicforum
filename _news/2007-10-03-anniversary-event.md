@@ -33,7 +33,7 @@ the 1st job is the common factor
 *A true thief looks under the surface*
 
 **Hint #5 (Gunslinger):**  
-The Gunslinger has long left for the elements
+Head to the edge of the Gunslinger hometown
 <!-- MQRPCX1 -->
 ---
 
