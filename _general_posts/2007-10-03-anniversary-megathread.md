@@ -98,4 +98,18 @@ Use this space to:
 
 {% include comment id=13 time="Oct 4, 19:30" msg="Scratch that Archmages come first before Bishops" %}
 
+{% include comment id=7 time="Oct 5, 10:15" msg="Anyone solve the cowboy puzzles? I I went to the edge and found a sign that say the gunsligner has left for the elements?" %}
 
+{% include comment id=11 time="Oct 5, 10:18" msg="The elements? Is it outside the map?" %}
+
+{% include comment id=12 time="Oct 5, 10:21" msg="Maybe we need to look outside the game." %}
+
+{% include comment id=6 time="Oct 5, 10:24" msg="What is the archer code?" %}
+
+{% include comment id=9 time="Oct 5, 10:27" msg="These two are obviously designed by programmers guys, I solved them BTW" %}
+
+{% include comment id=7 time="Oct 5, 10:30" msg="Really? How I am still wandering around the map" %}
+
+{% include comment id=9 time="Oct 5, 10:33" msg="Not telling you :) Both are solvable outside the game" %}
+
+{% include comment id=2 time="Oct 5, 18:00" msg="Moderator aka ID 2 Wow that is fast, as of 5 Oct all 100 codes has been claimed! Thank you for participating?" %}
