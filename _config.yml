@@ -4,10 +4,10 @@ title: "Frontier Tavern – Community Forums"
 collections:
   general_posts:
     output: true
-    permalink: /general/:slug/
+    permalink: /general/:name/
   news:
     output: true
-    permalink: /news/:slug/
+    permalink: /news/:name/
   hidden_posts:
     output: true
     permalink: /hidden/:slug/   # URLs like /hidden/secret-note/

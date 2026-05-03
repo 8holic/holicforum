@@ -1,123 +1,69 @@
 window.demoSession = {
-  name: '6 Anv Code Hunt (Demo)',
+  name: 'Introduction',
   steps: [
-    // ----- Exactly your intro (unchanged) -----
+    // Step 0: Greeting
     {
       id: 0,
       type: 'message',
       sender: 'Ryan',
       rank: 'Community Manager',
-      text: 'Hello! Welcome aboard. I am Ryan, the Community Manager.',
+      text: 'Hello! Welcome to the Investigation Chatroom. I’m Ryan, your guide.',
       delay: 200
     },
+    // Step 1: Tutorial – explain interaction format
     {
       id: 1,
       type: 'message',
       sender: 'Ryan',
       rank: 'Community Manager',
-      text: 'Some time ago I organized a community event. You can view the announcement here: <a href="../news/anniversary-event" target="_blank">6‑Month Anniversary Event</a>',
+      text: 'Here’s how this works: You are in a chatroom with me. I will ask a question, and you type your answer. I will respond to what you send. For this hunt, you may need to check the forums or previous announcements for clues. Just send your answer in the chat – I’ll take it from there.',
       delay: 500
     },
+    // Step 2: First question – forum name
     {
       id: 2,
-      type: 'message',
+      type: 'question',
       sender: 'Ryan',
       rank: 'Community Manager',
-      text: 'To get you started, let’s walk through this hunt. We will go one by one – each class reveals a piece of the gift card code.',
-      delay: 500
+      question: 'I want you to go to the forum <a href="../" target="_blank">(link here)</a>. What is the name of the forum?',
+      branches: {
+        '534ece0b5897985e7b5fc1fb83c27210154377d3206dcc7aed79af710a61ef97': 3
+      },
+      failMessage: 'That...is incorrect. Upon arriving, look at the top left of the screen.',
+      delay: 200
     },
-
-    // ----- Single master checkpoint (question) -----
+    // Step 3: Second question – game name from News (with hint support)
     {
       id: 3,
       type: 'question',
       sender: 'Ryan',
       rank: 'Community Manager',
-      question: 'I will be here. Send any class code (Warrior, Magician, Archer, Thief, Gunslinger) or the full master code. \n I will respond ASAP',
+      question: 'That’s right, so you are now at the forums. You can request a hint at certain questions. The solution to all puzzles can be found in this forum. What is the name of the game this forum is dedicated to?',
       branches: {
-        // Replace these hashes with the SHA-256 of your actual answers (lowercase, trimmed)
-        'fe6ca625b8f5ccfc880fc836b3b614715d9df9e4b7df6e54aa602ef110f34e50': 4,   // → step 5 (Warrior feedback)
-        '1e36d01a9ac63221aeb61cda3a611edf00d834822155340d6e63a4fb264eca35': 5,  // → step 6 (Magician feedback)
-        '05021cd5778c3890868be2ed9780a597fae43c669aa0a6f99169edab1c7779f4': 6,    // → step 7 (Archer feedback)
-        '98afd806b1b4932202a989e279de0e82bec9008184225df180bf50a69b11ccf5': 7,     // → step 8 (Thief feedback)
-        '267ecda242dc0e630b931a233df88e15c9b570e56a238bc4c456a862bb339300': 8,// → step 9 (Gunslinger feedback)
-        '4833676ad3abce0c4a0dc79ff01494e06af6e5eaa42bd0e4820de648be7d168f': 9      // → step 10 (final messages)
+        '25ae18991cdc179cae727f1613289a007ef0e1ed85e7f71d34cf83c9cf589296': 5,   // Correct answer → step 5
+        'b80e0af617d0f8ff54ab3142c34c76e83eafe75c6b2cbe87a44c56bb8505dd01': 4    // Hint request → step 4
       },
-      failMessage: 'Sorry I dont think that is quite right...',
-      delay: 100
+      failMessage: 'That is not quite right. Look at the oldest post.',
+      delay: 200
     },
-
-    // ----- Feedback steps (each jumps back to step 4) -----
+    // Step 4: Hint response (loops back to step 3)
     {
       id: 4,
       type: 'message',
       sender: 'Ryan',
       rank: 'Community Manager',
-      text: '✅ Warrior code correct! Good job.',
-      delay: 800,
-      nextStepIndex: 3   // ← go back to the question
+      text: 'You will need to go to news, and browse the oldest post.',
+      delay: 200,
+      nextStepIndex: 3
     },
+    // Step 5: Introduce case codes and the "3rdjob" mystery
     {
       id: 5,
       type: 'message',
       sender: 'Ryan',
       rank: 'Community Manager',
-      text: '✅ Magician code correct! Good job.',
-      delay: 800,
-      nextStepIndex: 3
-    },
-    {
-      id: 6,
-      type: 'message',
-      sender: 'Ryan',
-      rank: 'Community Manager',
-      text: '✅ Archer code correct! Good job.',
-      delay: 800,
-      nextStepIndex: 3
-    },
-    {
-      id: 7,
-      type: 'message',
-      sender: 'Ryan',
-      rank: 'Community Manager',
-      text: '✅ Thief code correct! Good job.',
-      delay: 800,
-      nextStepIndex: 3
-    },
-    {
-      id: 8,
-      type: 'message',
-      sender: 'Ryan',
-      rank: 'Community Manager',
-      text: '✅ Gunslinger code correct! Good job.',
-      delay: 800,
-      nextStepIndex: 3
-    },
-
-    // ----- Final messages (original steps 11‑13) -----
-    {
-      id: 9,
-      type: 'message',
-      sender: 'Ryan',
-      rank: 'Community Manager',
-      text: '✅ You have found the gift code! I hope you enjoyed it',
-      delay: 500
-    },
-    {
-      id: 10,
-      type: 'message',
-      sender: 'Ryan',
-      rank: 'Community Manager',
-      text: 'It has been expired for over 20 years though.',
-      delay: 1000
-    },
-    {
-      id: 11,
-      type: 'message',
-      sender: 'Ryan',
-      rank: 'Community Manager',
-      text: 'If you enjoyed this,please consider our upcoming physical workshop!',
-      delay: 500
+      text: 'Now you are familiar with the basics. Let’s give you a simple case.\n\nLook at the bar above – the case code allows you to visit certain cases and puzzles.\n\nTry the code: <strong>3rdjob</strong>\n\nThere is a relatively brief mystery for you to resolve. I encourage you to get immersed and figure things out.',
+      delay: 300
     }
   ]
 };

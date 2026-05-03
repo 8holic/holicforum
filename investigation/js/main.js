@@ -79,10 +79,13 @@ function addPost(sender, content, rank = null, delayMs = 0, isImage = false, img
       chatLogDiv.appendChild(postDiv);
       chatLogDiv.scrollTop = chatLogDiv.scrollHeight;
 
+      // Always re‑enable the session selector after a post is displayed
+      sessionSelect.disabled = false;
+
+      // Re‑enable input and send button only if we are waiting for a question
       if (waitingForQuestion) {
         playerInput.disabled = false;
         sendBtn.disabled = false;
-        sessionSelect.disabled = false; 
       }
       resolve();
     };
@@ -123,6 +126,7 @@ function loadSessionFile(caseId, callback) {
   const script = document.createElement('script');
   script.src = caseItem.sessionFile;
   script.onload = () => {
+    // Use bracket notation to support case IDs that start with a digit (e.g., "3rdjob")
     const sessionObj = window[`${caseId}Session`];
     if (sessionObj) {
       loadedSessions[caseId] = sessionObj;
@@ -229,11 +233,12 @@ function advance() {
     currentQuestionRank = null;
     playerInput.disabled = false;
     sendBtn.disabled = false;
+    sessionSelect.disabled = false;
   }
 }
 
 // ------------------------------------------------------------------
-// Answer handling (no success message, optional wrong-message mapping)
+// Answer handling (branching support)
 // ------------------------------------------------------------------
 async function handleAnswer(answer) {
   if (!waitingForQuestion) {
@@ -246,7 +251,7 @@ async function handleAnswer(answer) {
   // Show player's answer
   addMessage('You', escapeHtml(answer), null, 0);
 
-  // ========== NEW: Branching support (multiple answers, each jumps to different step) ==========
+  // Branching support
   if (step.branches) {
     let computedHash = null;
     try {
@@ -261,7 +266,6 @@ async function handleAnswer(answer) {
     }
     const targetStepIndex = step.branches[computedHash];
     if (targetStepIndex !== undefined) {
-      // Jump to the target step (could be a feedback message that returns later)
       currentStepIndex = targetStepIndex;
       waitingForQuestion = false;
       currentExpectedHash = null;
@@ -270,15 +274,13 @@ async function handleAnswer(answer) {
       advance();
       return;
     } else {
-      // No matching branch – show fail message and stay on same step
       const failMsg = step.failMessage || 'Code not recognized.';
       addMessage(currentQuestionSender || 'Admin', failMsg, currentQuestionRank);
       return;
     }
   }
-  // ========== End of branching support ==========
 
-  // Original single‑hash logic (unchanged)
+  // Legacy single‑hash logic (if no branches)
   let isCorrect = false;
   let computedHash = null;
   try {
@@ -309,6 +311,7 @@ async function handleAnswer(answer) {
     addMessage(currentQuestionSender || 'Admin', failMsg, currentQuestionRank);
   }
 }
+
 // ------------------------------------------------------------------
 // Event listeners
 // ------------------------------------------------------------------
@@ -331,33 +334,56 @@ sessionSelect.addEventListener('change', (e) => {
   startSession(e.target.value);
 });
 
+// ------------------------------------------------------------------
+// UNLOCK BUTTON: Checks ALL cases, not just the selected one
+// ------------------------------------------------------------------
 unlockBtn.addEventListener('click', async () => {
-  const selectedId = sessionSelect.value;
-  const caseItem = window.casesRegistry.find(c => c.id === selectedId);
-  if (!caseItem) return;
-  if (!caseItem.requiresUnlock) {
-    unlockStatus.innerText = 'This case does not need a password.';
+  const pwd = casePassword.value.trim();
+  if (!pwd) {
+    unlockStatus.innerText = 'Enter a password.';
     return;
   }
-  const pwd = casePassword.value.trim();
-  if (await unlockCase(selectedId, pwd)) {
-    loadSessionFile(selectedId, (err, session) => {
-      if (err) {
-        unlockStatus.innerText = `Error: ${err.message}`;
-        return;
-      }
-      unlockStatus.innerText = '✅ Case unlocked!';
-      unlockStatus.style.color = '#aaffaa';
-      const option = sessionSelect.querySelector(`option[value="${selectedId}"]`);
-      option.disabled = false;
-      option.textContent = caseItem.name;
-      startSession(selectedId);
-    });
-  } else {
+
+  // Compute SHA‑256 of entered password
+  const encoder = new TextEncoder();
+  const data = encoder.encode(pwd);
+  const hashBuffer = await crypto.subtle.digest('SHA-256', data);
+  const hashArray = Array.from(new Uint8Array(hashBuffer));
+  const computedHash = hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
+
+  // Find any case that requires unlock and has matching passwordHash
+  const matchedCase = window.casesRegistry.find(c => c.requiresUnlock && c.passwordHash === computedHash);
+  if (!matchedCase) {
     unlockStatus.innerText = 'Wrong password.';
     unlockStatus.style.color = '#ffaaaa';
     setTimeout(() => { unlockStatus.innerText = ''; }, 2000);
+    return;
   }
+
+  // If already loaded, just start it
+  if (loadedSessions[matchedCase.id]) {
+    unlockStatus.innerText = '✅ Case already unlocked.';
+    sessionSelect.value = matchedCase.id;
+    startSession(matchedCase.id);
+    return;
+  }
+
+  // Load the session file and unlock
+  loadSessionFile(matchedCase.id, (err, session) => {
+    if (err) {
+      unlockStatus.innerText = `Error: ${err.message}`;
+      return;
+    }
+    unlockStatus.innerText = '✅ Case unlocked!';
+    unlockStatus.style.color = '#aaffaa';
+    const option = sessionSelect.querySelector(`option[value="${matchedCase.id}"]`);
+    if (option) {
+      option.disabled = false;
+      option.textContent = matchedCase.name;
+    }
+    sessionSelect.value = matchedCase.id;
+    startSession(matchedCase.id);
+  });
 });
 
 // ------------------------------------------------------------------

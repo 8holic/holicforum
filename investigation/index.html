@@ -5,8 +5,42 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Investigation Portal – Frontier Tavern</title>
   <link rel="stylesheet" href="css/investigation.css">
+  <style>
+    /* Remove all default spacing */
+    body {
+      margin: 0;
+      padding: 0;
+    }
+    /* Title stuck to top-left corner */
+    .top-left-title {
+      position: absolute;
+      top: 0;
+      left: 0;
+      margin: 0;
+      padding: 0;
+      z-index: 100;
+    }
+    .top-left-title h1 {
+      margin: 0;
+      padding: 5px 0 0 10px;   /* tiny breathing room from edges, adjust as needed */
+      color: white;
+      font-size: 2.5rem;
+      text-shadow: 0 0 5px #000;
+      font-family: 'Courier New', monospace;
+      background: transparent;
+    }
+    /* Give the chat container some top margin so it doesn't hide under the title */
+    .chat-container {
+      margin-top: 60px;  /* prevents overlap with the title */
+    }
+  </style>
 </head>
 <body>
+<!-- Title at absolute top-left corner -->
+<div class="top-left-title">
+  <h1></h1>
+</div>
+
 <div class="chat-container">
   <div class="session-bar">
     <div>
@@ -28,11 +62,8 @@
   </div>
 </div>
 
-<!-- Load registry FIRST -->
 <script src="js/cases.js"></script>
-<!-- Then sessions (demo.js is always needed) -->
 <script src="js/sessions/demo.js"></script>
-<!-- Finally main logic -->
 <script src="js/main.js"></script>
 </body>
 </html>

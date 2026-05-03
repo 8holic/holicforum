@@ -9,16 +9,16 @@
 window.casesRegistry = [
   {
     id: 'demo',
-    name: '📘 6 Month Anniversary Challange(Demo)',
+    name: 'Introduction',
     sessionFile: 'js/sessions/demo.js',
-    password: null,
+    passwordHash: null,
     requiresUnlock: false
   },
   {
-    id: 'cryptoking',
-    name: '🔒 CryptoKing Case',
-    sessionFile: 'js/sessions/cryptoking.js',
-    password: '67503b871b810e6c5e6291bc81a7d49a0df0e1aaebd3ea4c1628539cbe882d5c',
+    id: '3rdjob',
+    name: '3rd Job Advancement',
+    sessionFile: 'js/sessions/3rdjob.js',
+    passwordHash: '696ca8b246eca2f42031e6d210ff2805cd7069155115dc01d6d3692e94038282',
     requiresUnlock: true
   }
   // Add new cases here – no need to touch main.js
