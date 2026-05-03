@@ -25,7 +25,8 @@ xerg obqi
 the 1st job is the common factor
 
 **Hint #3 (Archer):**  
-PLACEHOLDER
+99 114 48 115 115
+
 
 **Hint #4 (Thief):**  
 <img src="{{ '/assets/images/6anvthief.png' | relative_url }}" alt="Thief hint image" style="max-width: 100%;">

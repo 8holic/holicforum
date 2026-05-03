@@ -97,3 +97,5 @@ Use this space to:
 {% include comment id=3 time="Oct 4, 19:27" msg="I thought i got it, but it didnt work." %}
 
 {% include comment id=13 time="Oct 4, 19:30" msg="Scratch that Archmages come first before Bishops" %}
+
+

@@ -41,7 +41,7 @@ window.demoSession = {
         '05021cd5778c3890868be2ed9780a597fae43c669aa0a6f99169edab1c7779f4': 6,    // → step 7 (Archer feedback)
         '98afd806b1b4932202a989e279de0e82bec9008184225df180bf50a69b11ccf5': 7,     // → step 8 (Thief feedback)
         '267ecda242dc0e630b931a233df88e15c9b570e56a238bc4c456a862bb339300': 8,// → step 9 (Gunslinger feedback)
-        'e4624210286351d7a66b1b1183d0609ba61c7a5df832c57cf8704c8d4017d4bb': 9      // → step 10 (final messages)
+        '4833676ad3abce0c4a0dc79ff01494e06af6e5eaa42bd0e4820de648be7d168f': 9      // → step 10 (final messages)
       },
       failMessage: 'Sorry I dont think that is quite right...',
       delay: 100
