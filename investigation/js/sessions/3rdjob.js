@@ -30,7 +30,7 @@ window['3rdjobSession'] = {
       type: 'message',
       sender: 'You',
       rank: 'Mind',
-      text: 'I recall I have the ability to access a x <a href="../lifestyle_general/2007-10-04-forumn1" target="_blank">(Forum)</a> \n This should help me get the necessary information to complete the advancement. ',
+      text: 'I recall I have the ability to access a x <a href="../categories/lifestyle/2007-10-04-forumn1" target="_blank">(Forum)</a> \n This should help me get the necessary information to complete the advancement. ',
       delay: 200
     },
     {
