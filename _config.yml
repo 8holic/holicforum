@@ -1,30 +1,71 @@
 baseurl: "/holicforum"
 url: "https://8holic.github.io"
-title: "Frontier Tavern – Community Forums"
+title: "The Lamplight"
+
+# Collections for each forum category
 collections:
-  general_posts:
+  ongoing_cases:
     output: true
-    permalink: /general/:name/
-  news:
+    permalink: /categories/ongoing/:name/
+  announcements:
     output: true
-    permalink: /news/:name/
+    permalink: /categories/announcements/:name/
+  solved_mysteries:
+    output: true
+    permalink: /categories/solved/:name/
+  tech_tips:
+    output: true
+    permalink: /categories/techtips/:name/
+  user_introductions:
+    output: true
+    permalink: /categories/introductions/:name/
+  lifestyle_general:
+    output: true
+    permalink: /categories/lifestyle/:name/
+
+  # Keep existing collections if you still need them
+
   hidden_posts:
     output: true
-    permalink: /hidden/:slug/   # URLs like /hidden/secret-note/
+    permalink: /hidden/:slug/
 
+# Default layout for all posts in these collections
 defaults:
   - scope:
       path: ""
-      type: "general_posts"
+      type: "ongoing_cases"
     values:
       layout: "post"
   - scope:
       path: ""
-      type: "news"
+      type: "announcements"
     values:
       layout: "post"
+  - scope:
+      path: ""
+      type: "solved_mysteries"
+    values:
+      layout: "post"
+  - scope:
+      path: ""
+      type: "tech_tips"
+    values:
+      layout: "post"
+  - scope:
+      path: ""
+      type: "user_introductions"
+    values:
+      layout: "post"
+  - scope:
+      path: ""
+      type: "lifestyle_general"
+    values:
+      layout: "post"
+
+  # Existing defaults
+
   - scope:
       path: ""
       type: "hidden_posts"
     values:
-      layout: "post" 
+      layout: "post"

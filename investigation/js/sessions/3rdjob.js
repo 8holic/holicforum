@@ -30,7 +30,7 @@ window['3rdjobSession'] = {
       type: 'message',
       sender: 'You',
       rank: 'Mind',
-      text: 'I recall I have the ability to access a x <a href="../general/2007-10-04-forumn1" target="_blank">(Forum)</a> \n This should help me get the necessary information to complete the advancement. ',
+      text: 'I recall I have the ability to access a x <a href="../lifestyle_general/2007-10-04-forumn1" target="_blank">(Forum)</a> \n This should help me get the necessary information to complete the advancement. ',
       delay: 200
     },
     {
@@ -128,7 +128,7 @@ window['3rdjobSession'] = {
       rank: 'Mind',
       question: 'What is the solution?',
       branches: {
-        '9bd7493da8c706f7af7f3146b2675b1215fb1a8d0ab57809f9541d6f1e562ff5': 15
+        'e2d0b40ba326ca656762cfc9d3fa9481e150d237b52fa30ba1592f7b92e75350': 15
       },
       failMessage: 'The stone remains dark. Try another answer.',
       delay: 200

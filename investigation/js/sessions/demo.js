@@ -27,7 +27,7 @@ window.demoSession = {
       rank: 'Community Manager',
       question: 'I want you to go to the forum <a href="../" target="_blank">(link here)</a>. What is the name of the forum?',
       branches: {
-        '534ece0b5897985e7b5fc1fb83c27210154377d3206dcc7aed79af710a61ef97': 3
+        '80bc503c64068a97984312e77517c96becd064ff77bb09189e7fd4e4ce0d5adc': 3
       },
       failMessage: 'That...is incorrect. Upon arriving, look at the top left of the screen.',
       delay: 200
@@ -38,12 +38,12 @@ window.demoSession = {
       type: 'question',
       sender: 'Ryan',
       rank: 'Community Manager',
-      question: 'That’s right, so you are now at the forums. You can request a hint at certain questions. The solution to all puzzles can be found in this forum. What is the name of the game this forum is dedicated to?',
+      question: 'That’s right, so you are now at the forums. You can request a hint at certain questions. How many links on the topbar?',
       branches: {
-        '25ae18991cdc179cae727f1613289a007ef0e1ed85e7f71d34cf83c9cf589296': 5,   // Correct answer → step 5
-        'b80e0af617d0f8ff54ab3142c34c76e83eafe75c6b2cbe87a44c56bb8505dd01': 4    // Hint request → step 4
+        '7902699be42c8a8e46fbbb4501726517e86b22c56a189f7625a6da49081b2451': 5,   // Correct answer → step 5
+        '3ba8d02b16fd2a01c1a8ba1a1f036d7ce386ed953696fa57331c2ac48a80b255': 5    // Hint request → step 4
       },
-      failMessage: 'That is not quite right. Look at the oldest post.',
+      failMessage: 'That is not quite right. Count the categories including home.',
       delay: 200
     },
     // Step 4: Hint response (loops back to step 3)

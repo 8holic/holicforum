@@ -1,0 +1,22 @@
+---
+layout: default
+---
+
+<div class="category-header">
+  <h1>{{ page.title }}</h1>
+  <p style="padding-left: 20px; padding-right: 20px; margin: 0;">{{ page.description }}</p>
+</div>
+
+<div class="thread-list">
+  {% assign posts = site[page.collection_name] | sort: 'date' | reverse %}
+  {% for post in posts %}
+    <div class="thread">
+      <h3><a href="{{ post.url | relative_url }}">{{ post.title }}</a></h3>
+      <div class="thread-meta">
+        Posted by {{ post.author | default: "Anonymous" }} on {{ post.date | date: "%B %d, %Y" }}
+      </div>
+    </div>
+  {% else %}
+    <p style="padding-left: 20px;">No threads yet. Be the first to post.</p>
+  {% endfor %}
+</div>
