@@ -139,7 +139,6 @@ function advance() {
       const sender = step.sender || 'Admin';
       const rank = step.rank || null;
       addMessage(sender, step.text, rank, delay).then(() => {
-        // Go to next step (could be a string or fallback to a default)
         currentStepId = step.next || null;
         advance();
       });
@@ -153,6 +152,41 @@ function advance() {
         advance();
       });
       return;
+    } else if (step.type === 'random') {
+      // Pick a branch randomly, with optional weights
+      const branches = step.branches;
+      if (!branches || branches.length === 0) {
+        console.error('Random step missing branches');
+        currentStepId = null;
+        break;
+      }
+      const weights = step.weights || branches.map(() => 1);
+      const totalWeight = weights.reduce((sum, w) => sum + w, 0);
+      let rand = Math.random() * totalWeight;
+      let chosenIndex = 0;
+      for (let i = 0; i < weights.length; i++) {
+        rand -= weights[i];
+        if (rand <= 0) {
+          chosenIndex = i;
+          break;
+        }
+      }
+      const nextId = branches[chosenIndex];
+      const delay = step.delay || 0;
+      if (delay > 0) {
+        playerInput.disabled = true;
+        sendBtn.disabled = true;
+        setTimeout(() => {
+          currentStepId = nextId;
+          playerInput.disabled = false;
+          sendBtn.disabled = false;
+          advance();
+        }, delay);
+        return;
+      } else {
+        currentStepId = nextId;
+        // continue the while loop immediately
+      }
     } else if (step.type === 'question') {
       waitingForQuestion = true;
       currentExpectedHash = step.hash;

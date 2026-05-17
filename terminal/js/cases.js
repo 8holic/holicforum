@@ -16,7 +16,7 @@ window.casesRegistry = [
   },
   {
     id: '1stcase',
-    name: 'Ghost User',
+    name: 'The Case Of Ellie Wong',
     sessionFile: 'js/sessions/ITE2026.js',
     passwordHash: 'd9a54e9894d4849361ba15a112ca3b87cc6682138c0e35236296e4f6b1489951',
     requiresUnlock: true
