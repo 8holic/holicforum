@@ -8,17 +8,17 @@
 
 window.casesRegistry = [
   {
-    id: 'demo',
+    id: 'setup',
     name: 'Introduction',
-    sessionFile: 'js/sessions/demo.js',
-    passwordHash: null,
+    sessionFile: 'js/sessions/setup.js',
+    passwordHash: '8fb6d5f37e8055ce720bd0b1d56587f88c0071f285966ba17e72b2b12672aa73',
     requiresUnlock: false
   },
   {
-    id: '3rdjob',
-    name: '3rd Job Advancement',
-    sessionFile: 'js/sessions/3rdjob.js',
-    passwordHash: '696ca8b246eca2f42031e6d210ff2805cd7069155115dc01d6d3692e94038282',
+    id: '1stcase',
+    name: 'Ghost User',
+    sessionFile: 'js/sessions/ITE2026.js',
+    passwordHash: 'd9a54e9894d4849361ba15a112ca3b87cc6682138c0e35236296e4f6b1489951',
     requiresUnlock: true
   }
   // Add new cases here – no need to touch main.js

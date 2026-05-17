@@ -1,7 +1,7 @@
 baseurl: "/holicforum"
 url: "https://8holic.github.io"
 title: "The Lamplight"
-
+future: true
 # Collections for each forum category
 collections:
   ongoing_cases:

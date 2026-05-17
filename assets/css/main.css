@@ -269,3 +269,27 @@ img {
   }
 }
 
+/* Avatar left of title & meta */
+.post-header {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+}
+
+.post-header img {
+  flex-shrink: 0;
+  width: 64px;
+  height: auto;
+}
+
+.post-header-text {
+  flex: 1;
+}
+
+.post-header-text h1 {
+  margin: 0 0 4px 0;
+}
+
+.post-header-text .meta {
+  margin: 0;
+}

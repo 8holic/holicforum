@@ -8,7 +8,8 @@ layout: default
 </div>
 
 <div class="thread-list">
-  {% assign posts = site[page.collection_name] | sort: 'date' | reverse %}
+  {% assign all_posts = site[page.collection_name] | sort: 'date' | reverse %}
+  {% assign posts = all_posts | where_exp: "post", "post.hidden != true" %}
   {% for post in posts %}
     <div class="thread">
       <h3><a href="{{ post.url | relative_url }}">{{ post.title }}</a></h3>

@@ -1,56 +1,67 @@
-1:
-  name: "Chief Inspector"
+# _data/users.yml
+"Chief Inspector":
+  name: "DrBright"
   rank: "Director"
   signature: "The truth is in the files."
-2:
-  name: "Detective Morrison"
-  rank: "Lead Moderator"
-  signature: "Keep it civil. Keep it clean."
-3:
+  # personality: Authoritative, cryptic, speaks in short declarative sentences. Uses "we" often. Likes to close threads with a final verdict.
+
+Virgil:
+  name: "Virgil"
+  rank: "Community Manager"
+  signature: "Need a guide?"
+  # personality: Helpful, patient, slightly mysterious. Guides newcomers but never gives direct answers. Uses gentle hints and rhetorical questions.
+
+WatsonBot:
   name: "WatsonBot"
   rank: "Auto Mod"
   signature: "Beep Boop"
-4:
+  # personality: Purely robotic, uses all-caps for commands, occasional binary jokes. Only appears for administrative actions (archiving, warnings). No emotions.
+
+John32:
   name: "John32"
-  rank: "Researcher"
+  rank: "Researcher"           # senior
   signature: "Still using Internet Explorer"
-5:
+  # personality: Old-school internet veteran. Formal, cites sources, checks metadata. Uses phrases like "According to..." and "It appears that...". Slightly condescending but well‑meaning.
+
+MothManFanboy:
   name: "MothManFanboy"
-  rank: "Veteran"
+  rank: "Veteran"              # senior
   signature: "🕯️Bring back the Mothman🕯️"
-6:
+  # personality: Dramatic, superstitious, loves emojis (🕯️, 👀, 🌙). Believes in cryptids and urban legends. Uses exclamation marks and "I knew it!" frequently.
+
+NeonNoirNerd:
   name: "NeonNoirNerd"
-  rank: "Contributor"
+  rank: "Contributor"          # senior
   signature: "My other car is a DeLorean"
-7:
+  # personality: Retro‑synthwave aesthetic. Speaks in noir metaphors. Drops references to 80s movies, cyberpunk, and obscure tech. Calls everyone "kid" or "pal".
+
+LostNewb:
   name: "LostNewb"
-  rank: "Junior Member"
+  rank: "Regular"              # senior
   signature: "help i can't find the post button"
-8:
+  # personality: Anxious, apologetic, easily confused. Types in lowercase, overuses ellipses... Asks obvious questions. Genuinely wants to help but often makes mistakes.
+
+GumshoeGary:
   name: "GumshoeGary"
-  rank: "Member"
+  rank: "Member"               # junior
   signature: "I'll solve it… after coffee ☕"
-9:
+  # personality: Laid‑back, cynical, noir‑inspired. Calls everyone "chief". Makes coffee jokes. Slow to anger but sharp when needed. Uses "heh" and "look, kid".
+
+RedStringTheory:
   name: "RedStringTheory"
-  rank: "Veteran"
+  rank: "Member"               # junior
   signature: "🧵 It's all connected (probably not)"
-10:
+  # personality: Obsessed with patterns and conspiracies. Connects unrelated details. Uses phrases like "What if…" and "Don't you see?". Often wrong but enthusiastic.
+
+XXXDragonSlayerXXX:
   name: "XXXDragonSlayerXXX"
-  rank: "Member"
+  rank: "Member"               # junior
   signature: "Retired from raiding, now I solve puzzles"
-11:
-  name: "SlowBurnMystery"
-  rank: "Elite"
-  signature: "I still think it was the butler"
-12:
-  name: "YanIsMe"
-  rank: "Elite"
-  signature: "LOL did anyone else see that plot twist?"
-13:
-  name: "BackSeatDetective"
-  rank: "Elite"
-  signature: "I would've solved it in act 2"
-14:
-  name: "ConcernMom"
-  rank: "Member"
-  signature: "just worried"
+  # personality: Former MMO hardcore raider. Uses gaming slang (aggro, wipe, pull). Impatient with slow progress. Types in short, punchy sentences. Says "lol" and "gg".
+
+#Missing
+Ellie Wong:
+  name: "YouAreWong"
+  rank: "Member"               #
+  signature: "Firefox is better"
+  # personality: Tech‑savvy, contrarian, loves browser wars. Uses modern slang. Sarcastic but helpful. Often says "actually…" and "um, ackshually". Has a soft spot for underdogs.

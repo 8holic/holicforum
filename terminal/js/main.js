@@ -1,25 +1,23 @@
-// Shared chat logic – forum‑style posts, SHA‑256 answers, delays
+// ==================================================================
+// main.js – case selection via password (SHA‑256) with named steps
+// ==================================================================
 
 let currentSession = null;
-let currentStepIndex = 0;
+let currentStepId = null;          // string key, e.g. "step_1"
 let waitingForQuestion = false;
 let currentExpectedHash = null;
 let currentQuestionSender = null;
 let currentQuestionRank = null;
 
 let messageQueue = Promise.resolve();
+let caseSelected = false;
 
 const chatLogDiv = document.getElementById('chatLog');
 const playerInput = document.getElementById('playerInput');
 const sendBtn = document.getElementById('sendBtn');
-const sessionSelect = document.getElementById('sessionSelect');
-const unlockBtn = document.getElementById('unlockBtn');
-const casePassword = document.getElementById('casePassword');
-const unlockStatus = document.getElementById('unlockStatus');
-
 const loadedSessions = {};
 
-// Helper: escape HTML only for author name/rank, not for message content (which may contain links)
+// ---------- helpers ----------
 function escapeHtml(str) {
   if (!str) return '';
   return str.replace(/[&<>]/g, function(m) {
@@ -30,43 +28,17 @@ function escapeHtml(str) {
   });
 }
 
-// ------------------------------------------------------------------
-// UI: Build dropdown from casesRegistry
-// ------------------------------------------------------------------
-function buildDropdown() {
-  sessionSelect.innerHTML = '';
-  window.casesRegistry.forEach(caseItem => {
-    const option = document.createElement('option');
-    option.value = caseItem.id;
-    if (caseItem.requiresUnlock && !loadedSessions[caseItem.id]) {
-      option.disabled = true;
-      option.textContent = `🔒 ${caseItem.name} (locked)`;
-    } else {
-      option.disabled = false;
-      option.textContent = caseItem.name;
-    }
-    sessionSelect.appendChild(option);
-  });
-}
-
-// ------------------------------------------------------------------
-// Append a forum‑style post (two columns) with optional rank and delay
-// ------------------------------------------------------------------
 function addPost(sender, content, rank = null, delayMs = 0, isImage = false, imgSrc = null, imgAlt = '') {
   messageQueue = messageQueue.then(() => new Promise((resolve) => {
     const showPost = () => {
       const postDiv = document.createElement('div');
       postDiv.className = `post ${sender === 'You' ? 'player' : ''}`;
-
-      // Build author column
       let authorHtml = `<div class="post-author"><div class="name">${escapeHtml(sender)}</div>`;
       if (sender !== 'You') {
-        const displayRank = rank || 'Member';
+        const displayRank = rank || '';
         authorHtml += `<div class="rank">${escapeHtml(displayRank)}</div>`;
       }
       authorHtml += `</div>`;
-
-      // Build content column
       let contentHtml = `<div class="post-content"><div class="bubble">`;
       if (isImage) {
         contentHtml += `<img src="${imgSrc}" alt="${escapeHtml(imgAlt)}" style="max-width: 100%; border-radius: 8px;">`;
@@ -74,26 +46,18 @@ function addPost(sender, content, rank = null, delayMs = 0, isImage = false, img
         contentHtml += content;
       }
       contentHtml += `</div></div>`;
-
       postDiv.innerHTML = authorHtml + contentHtml;
       chatLogDiv.appendChild(postDiv);
       chatLogDiv.scrollTop = chatLogDiv.scrollHeight;
-
-      // Always re‑enable the session selector after a post is displayed
-      sessionSelect.disabled = false;
-
-      // Re‑enable input and send button only if we are waiting for a question
       if (waitingForQuestion) {
         playerInput.disabled = false;
         sendBtn.disabled = false;
       }
       resolve();
     };
-
     if (delayMs > 0) {
       playerInput.disabled = true;
       sendBtn.disabled = true;
-      sessionSelect.disabled = true; 
       setTimeout(showPost, delayMs);
     } else {
       showPost();
@@ -102,7 +66,6 @@ function addPost(sender, content, rank = null, delayMs = 0, isImage = false, img
   return messageQueue;
 }
 
-// Convenience wrappers
 function addMessage(sender, text, rank, delayMs) {
   return addPost(sender, text, rank, delayMs, false);
 }
@@ -110,9 +73,7 @@ function addImage(sender, src, alt, rank, delayMs) {
   return addPost(sender, '', rank, delayMs, true, src, alt);
 }
 
-// ------------------------------------------------------------------
-// Session loading & unlocking
-// ------------------------------------------------------------------
+// ---------- Session loading ----------
 function loadSessionFile(caseId, callback) {
   const caseItem = window.casesRegistry.find(c => c.id === caseId);
   if (!caseItem) {
@@ -126,7 +87,6 @@ function loadSessionFile(caseId, callback) {
   const script = document.createElement('script');
   script.src = caseItem.sessionFile;
   script.onload = () => {
-    // Use bracket notation to support case IDs that start with a digit (e.g., "3rdjob")
     const sessionObj = window[`${caseId}Session`];
     if (sessionObj) {
       loadedSessions[caseId] = sessionObj;
@@ -139,27 +99,9 @@ function loadSessionFile(caseId, callback) {
   document.head.appendChild(script);
 }
 
-async function unlockCase(caseId, password) {
-  const caseItem = window.casesRegistry.find(c => c.id === caseId);
-  if (!caseItem) return false;
-  if (!caseItem.requiresUnlock) return true;
-  if (!caseItem.passwordHash) return false;
-  const normalized = password.trim();
-  const encoder = new TextEncoder();
-  const data = encoder.encode(normalized);
-  const hashBuffer = await crypto.subtle.digest('SHA-256', data);
-  const hashArray = Array.from(new Uint8Array(hashBuffer));
-  const computedHash = hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
-  return computedHash === caseItem.passwordHash;
-}
-
 function startSession(caseId) {
   const caseItem = window.casesRegistry.find(c => c.id === caseId);
   if (!caseItem) return;
-  if (caseItem.requiresUnlock && !loadedSessions[caseId]) {
-    unlockStatus.innerText = 'This case requires a password. Enter it above and click Unlock.';
-    return;
-  }
   if (!loadedSessions[caseId]) {
     loadSessionFile(caseId, (err, session) => {
       if (err) {
@@ -178,29 +120,27 @@ function startSession(caseId) {
 function resetChat() {
   messageQueue = Promise.resolve();
   chatLogDiv.innerHTML = '';
-  currentStepIndex = 0;
+  currentStepId = currentSession.start;
   waitingForQuestion = false;
   currentExpectedHash = null;
   currentQuestionSender = null;
   currentQuestionRank = null;
   playerInput.disabled = false;
   sendBtn.disabled = false;
-  sessionSelect.disabled = false; 
   advance();
 }
 
-// ------------------------------------------------------------------
-// Step processing with delays
-// ------------------------------------------------------------------
+// ---------- Step processing (using named steps) ----------
 function advance() {
-  while (currentStepIndex < currentSession.steps.length) {
-    const step = currentSession.steps[currentStepIndex];
+  while (currentStepId && currentSession.steps[currentStepId]) {
+    const step = currentSession.steps[currentStepId];
     if (step.type === 'message') {
       const delay = step.delay || 0;
       const sender = step.sender || 'Admin';
       const rank = step.rank || null;
       addMessage(sender, step.text, rank, delay).then(() => {
-        currentStepIndex = step.nextStepIndex !== undefined ? step.nextStepIndex : currentStepIndex + 1;
+        // Go to next step (could be a string or fallback to a default)
+        currentStepId = step.next || null;
         advance();
       });
       return;
@@ -209,7 +149,7 @@ function advance() {
       const sender = step.sender || 'Admin';
       const rank = step.rank || null;
       addImage(sender, step.src, step.alt, rank, delay).then(() => {
-        currentStepIndex++;
+        currentStepId = step.next || null;
         advance();
       });
       return;
@@ -223,35 +163,33 @@ function advance() {
         playerInput.disabled = false;
         sendBtn.disabled = false;
       });
+      break;  // stop advancing until user answers
+    } else {
+      console.error('Unknown step type:', step.type);
       break;
     }
   }
-  if (currentStepIndex >= currentSession.steps.length) {
+  if (!currentStepId) {
+    // end of session
     waitingForQuestion = false;
     currentExpectedHash = null;
     currentQuestionSender = null;
     currentQuestionRank = null;
     playerInput.disabled = false;
     sendBtn.disabled = false;
-    sessionSelect.disabled = false;
   }
 }
 
-// ------------------------------------------------------------------
-// Answer handling (branching support)
-// ------------------------------------------------------------------
+// ---------- Answer handling (with named branches) ----------
 async function handleAnswer(answer) {
   if (!waitingForQuestion) {
     addMessage(currentQuestionSender || 'Admin', 'No question active. Please continue.', currentQuestionRank);
     return;
   }
-  const step = currentSession.steps[currentStepIndex];
+  const step = currentSession.steps[currentStepId];
   const normalized = answer.trim().toLowerCase();
-
-  // Show player's answer
   addMessage('You', escapeHtml(answer), null, 0);
 
-  // Branching support
   if (step.branches) {
     let computedHash = null;
     try {
@@ -264,9 +202,9 @@ async function handleAnswer(answer) {
       addMessage(currentQuestionSender || 'Admin', `Error: ${err.message}`, currentQuestionRank);
       return;
     }
-    const targetStepIndex = step.branches[computedHash];
-    if (targetStepIndex !== undefined) {
-      currentStepIndex = targetStepIndex;
+    const targetStepId = step.branches[computedHash];
+    if (targetStepId !== undefined) {
+      currentStepId = targetStepId;
       waitingForQuestion = false;
       currentExpectedHash = null;
       currentQuestionSender = null;
@@ -280,7 +218,7 @@ async function handleAnswer(answer) {
     }
   }
 
-  // Legacy single‑hash logic (if no branches)
+  // Simple hash check (single correct answer)
   let isCorrect = false;
   let computedHash = null;
   try {
@@ -296,8 +234,8 @@ async function handleAnswer(answer) {
   }
 
   if (isCorrect) {
-    const nextIndex = step.successNextStepIndex || currentStepIndex + 1;
-    currentStepIndex = nextIndex;
+    const nextId = step.successNext || step.next || null;
+    currentStepId = nextId;
     waitingForQuestion = false;
     currentExpectedHash = null;
     currentQuestionSender = null;
@@ -312,13 +250,36 @@ async function handleAnswer(answer) {
   }
 }
 
-// ------------------------------------------------------------------
-// Event listeners
-// ------------------------------------------------------------------
+// ---------- Case selection – password only ----------
+async function trySelectCase(input) {
+  const trimmed = input.trim();
+  const encoder = new TextEncoder();
+  const data = encoder.encode(trimmed);
+  const hashBuffer = await crypto.subtle.digest('SHA-256', data);
+  const hashArray = Array.from(new Uint8Array(hashBuffer));
+  const computedHash = hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
+
+  const matched = window.casesRegistry.find(c => c.passwordHash === computedHash);
+  if (matched) {
+    caseSelected = true;
+    document.querySelector('.session-bar').innerHTML = '<label>Session: ' + matched.name + '</label>';
+    startSession(matched.id);
+  } else {
+    addMessage('Admin', 'Invalid code. Try again.');
+  }
+}
+
+// ---------- Send button ----------
 sendBtn.addEventListener('click', () => {
   const text = playerInput.value.trim();
   if (!text) return;
   playerInput.value = '';
+
+  if (!caseSelected) {
+    trySelectCase(text);
+    return;
+  }
+
   if (waitingForQuestion) {
     handleAnswer(text);
   } else {
@@ -330,64 +291,12 @@ playerInput.addEventListener('keypress', (e) => {
   if (e.key === 'Enter') sendBtn.click();
 });
 
-sessionSelect.addEventListener('change', (e) => {
-  startSession(e.target.value);
+// ---------- Init ----------
+addMessage('Terminal', `RESTRICTED INTERFACE<br>
+Activity on this terminal is logged.<br>
+Proceed only if authorized.
+For New User Enter:setup`, null, 0);
+addMessage('Terminal', 'Enter authorization:', null, 1500).then(() => {
+  playerInput.disabled = false;
+  sendBtn.disabled = false;
 });
-
-// ------------------------------------------------------------------
-// UNLOCK BUTTON: Checks ALL cases, not just the selected one
-// ------------------------------------------------------------------
-unlockBtn.addEventListener('click', async () => {
-  const pwd = casePassword.value.trim();
-  if (!pwd) {
-    unlockStatus.innerText = 'Enter a password.';
-    return;
-  }
-
-  // Compute SHA‑256 of entered password
-  const encoder = new TextEncoder();
-  const data = encoder.encode(pwd);
-  const hashBuffer = await crypto.subtle.digest('SHA-256', data);
-  const hashArray = Array.from(new Uint8Array(hashBuffer));
-  const computedHash = hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
-
-  // Find any case that requires unlock and has matching passwordHash
-  const matchedCase = window.casesRegistry.find(c => c.requiresUnlock && c.passwordHash === computedHash);
-  if (!matchedCase) {
-    unlockStatus.innerText = 'Wrong password.';
-    unlockStatus.style.color = '#ffaaaa';
-    setTimeout(() => { unlockStatus.innerText = ''; }, 2000);
-    return;
-  }
-
-  // If already loaded, just start it
-  if (loadedSessions[matchedCase.id]) {
-    unlockStatus.innerText = '✅ Case already unlocked.';
-    sessionSelect.value = matchedCase.id;
-    startSession(matchedCase.id);
-    return;
-  }
-
-  // Load the session file and unlock
-  loadSessionFile(matchedCase.id, (err, session) => {
-    if (err) {
-      unlockStatus.innerText = `Error: ${err.message}`;
-      return;
-    }
-    unlockStatus.innerText = '✅ Case unlocked!';
-    unlockStatus.style.color = '#aaffaa';
-    const option = sessionSelect.querySelector(`option[value="${matchedCase.id}"]`);
-    if (option) {
-      option.disabled = false;
-      option.textContent = matchedCase.name;
-    }
-    sessionSelect.value = matchedCase.id;
-    startSession(matchedCase.id);
-  });
-});
-
-// ------------------------------------------------------------------
-// Initialise
-// ------------------------------------------------------------------
-buildDropdown();
-startSession('demo');
