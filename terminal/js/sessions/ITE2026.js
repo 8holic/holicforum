@@ -50,7 +50,7 @@ window['ITE2026Session'] = {
       type: 'message',
       sender: 'Bryan',
       rank: 'Youth Network Member',
-      text: 'I know it has been deleted, but you can change the url to 3 to access it.',
+      text: 'I know it has been deleted, but you can change the url from elevator3 to elevator2 to access it.',
       delay: 200,
       next: 'URLSwap3'
     },
