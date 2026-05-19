@@ -7,7 +7,7 @@ window['ITE2026Session'] = {
       sender: 'Bryan',
       rank: 'Youth Network Member',
       text: 'On 18th May 2026, Ellie Wong suddenly vanished. She was last seen at The Frontier CC',
-      delay: 200,
+      delay: 400,
       next: 'StartA2'
     },
     StartA2: {
@@ -15,7 +15,7 @@ window['ITE2026Session'] = {
       sender: 'Bryan',
       rank: 'Youth Network Member',
       text: 'On that day, she went inside the elevator and never exited',
-      delay: 200,
+      delay: 500,
       next: 'StartA3'
     },
     StartA3: {
@@ -28,7 +28,7 @@ window['ITE2026Session'] = {
       },
       failNext: 'StartA3Wrong',
       failMessage: 'That doesn\'t seem right, try again.',
-      delay: 200
+      delay: 500
     },
     StartA3Wrong: {
       type: 'message',
@@ -79,6 +79,14 @@ window['ITE2026Session'] = {
       sender: 'Bryan',
       rank: 'Youth Network Member',
       text: 'That is it, I think that is all we have to do. Lets head to the elevator.',
+      delay: 300,
+      next: 'URLSwapCorrect1'
+    },
+    URLSwapCorrect1: {
+      type: 'message',
+      sender: 'Bryan',
+      rank: 'Youth Network Member',
+      text: '<img src="./assets/ite2026pic1.png" alt="Delivery" width="400">',
       delay: 300,
       next: 'RandomBranch'
     },
@@ -156,7 +164,7 @@ window['ITE2026Session'] = {
       type: 'message',
       sender: 'Elevator',
       rank: null,
-      text: 'A violent shudder runs through the elevator. The lights cut out for three full seconds. When they return, a new button glows on the panel: 13.',
+      text: '<img src="./assets/ite2026pic3.png" alt="Delivery" width="400">',
       delay: 500,
       next: 'ElevatorPuzzleSuccess'
     },
@@ -267,7 +275,7 @@ window['ITE2026Session'] = {
       type: 'message',
       sender: 'Elevator',
       rank: null,
-      text: 'The elevator groans, dropping an inch before locking in place. The lights pulse once, and the 13 button glimmers into existence.',
+      text: '<img src="./assets/ite2026pic3.png" alt="Delivery" width="400">',
       delay: 500,
       next: 'ElevatorPuzzleSuccess'
     },
@@ -317,15 +325,15 @@ window['ITE2026Session'] = {
       type: 'message',
       sender: 'Elevator',
       rank: null,
-      text: 'As a uncomfortable chill flows in the elevator, you see the 13th Story button. You press it.',
+      text: '<img src="./assets/ite2026pic3.png" alt="Delivery" width="150"> <br> As a uncomfortable chill flows in the elevator, you see the 13th Story button. You press it.',
       delay: 1000,
-      next: null   // for now
+      next: 'Floor13'   // for now
     },
     Floor13: {
       type: 'message',
       sender: 'You',
       rank: null,
-      text: "You walk out onto the roof. It is dark out here. It looks just like the CC.<br><em>[Remind Bryan to add picture]</em>'",
+      text: '<img src="./assets/ite2026pic4.png" alt="Delivery" width="400">',
       delay: 500,
       next: 'Floor13A'   // for now
     },
@@ -422,7 +430,7 @@ window['ITE2026Session'] = {
       "type": "message",
       "sender": "You",
       "rank": null,
-      "text": "You slip through the door as the phantom behind it nods. Inside you see Ellie!",
+      "text": '<img src="./assets/ite2026pic5.png" alt="Delivery" width="400"> <br> You head down the stairs and heard something',
       "delay": 800,
       "next": 'Finale1'
     },
@@ -438,7 +446,7 @@ window['ITE2026Session'] = {
       type: 'message',
       sender: 'Ellie Wong',
       rank: 'Member',
-      text: 'Listen, the location here is haunted by those from before the Community Center was built. They open occasionally because they require something before they can go in peace.',
+      text: '<img src="./assets/ite2026pic6.png" alt="Delivery" width="400"> <br> I have been stucked here a few days,there are some <br> mysterious doors around.',
       delay: 800,
       next: 'Finale3'
     },
