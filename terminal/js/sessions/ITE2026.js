@@ -231,7 +231,7 @@ window['ITE2026Session'] = {
       failMessage: 'For a moment you were distracted, but you recall you need to decide which floor to go to.',
       delay: 2000
     },
-    // Correct sequence: 3 → 2 → 4 → 2
+    // Correct sequence: 3 → 2 → 4 → 3
     May30Correct1: {
       type: 'question',
       sender: 'Elevator',
@@ -264,9 +264,9 @@ window['ITE2026Session'] = {
       rank: null,
       question: 'The air pressure drops. You feel ears pop.\nYou are on floor 4. Edusave banners sway without any breeze. Buttons: 1, 2, 3. Where to?',
       branches: {
-        'd4735e3a265e16eee03f59718b9b5d03019c07d8b6c51f90da3a666eec13ab35': 'May30Correct4',  // 2 → final correct
+        'd4735e3a265e16eee03f59718b9b5d03019c07d8b6c51f90da3a666eec13ab35': 'May30Floor2',  // 2
         '6b86b273ff34fce19d6b804eff5a3f5747ada4eaa22f1d49c01e52ddb7875b4b': 'May30Floor1',   // 1
-        '4e07408562bedb8b60ce05c1decfe3ad16b72230967de01f640b7e4729b49fce': 'May30Floor3'    // 3
+        '4e07408562bedb8b60ce05c1decfe3ad16b72230967de01f640b7e4729b49fce': 'May30Correct4'    // 3 correct
       },
       failMessage: 'For a moment you were distracted, but you recall you need to decide which floor to go to.',
       delay: 2000
