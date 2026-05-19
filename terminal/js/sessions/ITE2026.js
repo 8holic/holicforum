@@ -98,12 +98,12 @@ window['ITE2026Session'] = {
       delay: 100
     },
 
-    // ========== 28 MAY ELEVATOR ==========
+    // ========== 24 MAY ELEVATOR ==========
     May28Intro: {
       type: 'message',
       sender: 'Elevator',
       rank: null,
-      text: 'It is May 28. The doors slide shut behind you, sealing you in.',
+      text: 'It is May 24. The doors slide shut behind you, sealing you in.',
       delay: 300,
       next: 'May28Floor1'
     },
@@ -113,7 +113,7 @@ window['ITE2026Session'] = {
       rank: null,
       question: 'You are on floor 1. You see room 101 at the corner, and the location where people return books.\nThe panel shows buttons for floors 2, 3, and 4. Where do you want to go?',
       branches: {
-        'd4735e3a265e16eee03f59718b9b5d03019c07d8b6c51f90da3a666eec13ab35': 'May28Correct1',  // 2 → correct first move
+        'd4735e3a265e16eee03f59718b9b5d03019c07d8b6c51f90da3a666eec13ab35': 'May28Floor2',  // 2 → correct first move
         '4e07408562bedb8b60ce05c1decfe3ad16b72230967de01f640b7e4729b49fce': 'May28Floor3',   // 3
         '4b227777d4dd1fc61c6f884f48641d02b4d121d3fd328cb08b5531fcacdabf8a': 'May28Floor4'    // 4
       },
@@ -164,7 +164,7 @@ window['ITE2026Session'] = {
       type: 'message',
       sender: 'Elevator',
       rank: null,
-      text: '<img src="./assets/ite2026pic3.jpeg" alt="Delivery" width="400">',
+      text: 'is this it?',
       delay: 500,
       next: 'ElevatorPuzzleSuccess'
     },
@@ -536,7 +536,7 @@ window['ITE2026Session'] = {
       rank: 'Null',
       text: 'Door 9: A painting of a forest with a unique tree',
       delay: 500,
-      next: 'Finale10'
+      next: 'FinaleIntro10'
     },
     FinaleIntro10: {
       type: 'message',
