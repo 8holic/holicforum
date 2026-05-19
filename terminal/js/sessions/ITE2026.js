@@ -327,7 +327,7 @@ window['ITE2026Session'] = {
       rank: null,
       text: "You walk out onto the roof. It is dark out here. It looks just like the CC.<br><em>[Remind Bryan to add picture]</em>'",
       delay: 500,
-      next: Floor13A   // for now
+      next: 'Floor13A'   // for now
     },
     Floor13A: {
       type: 'message',
@@ -380,15 +380,15 @@ window['ITE2026Session'] = {
       rank: '80-Year-Old Spirit',
       text: 'Ahhh! That’s it!Laksa, I will leave you be',
       delay: 800,
-      next: PhantomHall1   // continue later
+      next: 'PhantomHall1'   // continue later
     },
     PhantomHall1: {
       type: 'message',
       sender: 'You',
-      rank: Null,
+      rank: null,
       text: 'You continue to look for Ellie Wong and you see the CC Hall,it looks like there is a party.',
       delay: 800,
-      next: PhantomHall2   // continue later
+      next: 'PhantomHall2'   // continue later
     },
     "PhantomHall2": {
       "type": "message",
@@ -414,7 +414,7 @@ window['ITE2026Session'] = {
       "type": "message",
       "sender": "Phantom",
       "rank": null,
-      "text": "As you tried to enter someone tackeld you.",
+      "text": "As you tried to enter someone tackeled you.",
       "delay": 10000,
       "next": "PhantomHallQuestion"
     },
@@ -424,7 +424,7 @@ window['ITE2026Session'] = {
       "rank": null,
       "text": "You slip through the door as the phantom behind it nods. Inside you see Ellie!",
       "delay": 800,
-      "next": Finale
+      "next": 'Finale1'
     },
     Finale1: {
       type: 'message',
@@ -536,11 +536,11 @@ window['ITE2026Session'] = {
       rank: 'Null',
       text: 'To indicate which door, indicate exactly only the nunber eg enter 1 if you want to enter door 1',
       delay: 500,
-      next: 'FinaleRandom'
+      next: 'FinalRandom'
     },
     FinalRandom: {
       type: 'random',
-      branches: ['FinaleHall1', 'FinaleHall2', 'FinaleHall3', 'FinaleHall4', 'FinaleHall5', 'FinaleHall6'],
+      branches: ['FinalHall1', 'FinalHall2', 'FinalHall3', 'FinalHall4', 'FinalHall5', 'FinalHall6'],
       delay: 500
     },
     FinalHall1: {
@@ -716,7 +716,7 @@ window['ITE2026Session'] = {
       rank: 'Null',
       question: 'This is the final one, you can feel it',
       branches: {
-        '6b86b273ff34fce19d6b804eff5a3f5747ada4eaa22f1d49c01e52ddb7875b4b': 'FinalSucess1'
+        '6b86b273ff34fce19d6b804eff5a3f5747ada4eaa22f1d49c01e52ddb7875b4b': 'FinalSuccess1'
       },
       failNext: 'FinalRandom',
       delay: 1000
@@ -733,11 +733,9 @@ window['ITE2026Session'] = {
       type: 'message',
       sender: 'You',
       rank: 'Null',
-      text: 'And with that,you find yourself back in the elevator.',
+      text: 'And with that,you find yourself back in the elevator. You are back!',
       delay: 500,
-      next: 'FinalSuccess1'
-    },
-
-
+      next: null
+    }
   }
 };
