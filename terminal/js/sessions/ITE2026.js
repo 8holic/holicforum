@@ -86,7 +86,7 @@ window['ITE2026Session'] = {
       type: 'message',
       sender: 'Bryan',
       rank: 'Youth Network Member',
-      text: '<img src="./assets/ite2026pic1.png" alt="Delivery" width="400">',
+      text: '<img src="./assets/ite2026pic1.jpeg" alt="Delivery" width="400">',
       delay: 300,
       next: 'RandomBranch'
     },
@@ -164,7 +164,7 @@ window['ITE2026Session'] = {
       type: 'message',
       sender: 'Elevator',
       rank: null,
-      text: '<img src="./assets/ite2026pic3.png" alt="Delivery" width="400">',
+      text: '<img src="./assets/ite2026pic3.jpeg" alt="Delivery" width="400">',
       delay: 500,
       next: 'ElevatorPuzzleSuccess'
     },
@@ -275,7 +275,7 @@ window['ITE2026Session'] = {
       type: 'message',
       sender: 'Elevator',
       rank: null,
-      text: '<img src="./assets/ite2026pic3.png" alt="Delivery" width="400">',
+      text: '<img src="./assets/ite2026pic3.jpeg" alt="Delivery" width="400">',
       delay: 500,
       next: 'ElevatorPuzzleSuccess'
     },
@@ -325,7 +325,7 @@ window['ITE2026Session'] = {
       type: 'message',
       sender: 'Elevator',
       rank: null,
-      text: '<img src="./assets/ite2026pic3.png" alt="Delivery" width="150"> <br> As a uncomfortable chill flows in the elevator, you see the 13th Story button. You press it.',
+      text: '<img src="./assets/ite2026pic3.jpeg" alt="Delivery" width="150"> <br> As a uncomfortable chill flows in the elevator, you see the 13th Story button. You press it.',
       delay: 1000,
       next: 'Floor13'   // for now
     },
@@ -333,7 +333,7 @@ window['ITE2026Session'] = {
       type: 'message',
       sender: 'You',
       rank: null,
-      text: '<img src="./assets/ite2026pic4.png" alt="Delivery" width="400">',
+      text: '<img src="./assets/ite2026pic4.jpeg" alt="Delivery" width="400">',
       delay: 500,
       next: 'Floor13A'   // for now
     },
@@ -430,7 +430,7 @@ window['ITE2026Session'] = {
       "type": "message",
       "sender": "You",
       "rank": null,
-      "text": '<img src="./assets/ite2026pic5.png" alt="Delivery" width="400"> <br> You head down the stairs and heard something',
+      "text": '<img src="./assets/ite2026pic5.jpeg" alt="Delivery" width="400"> <br> You head down the stairs and heard something',
       "delay": 800,
       "next": 'Finale1'
     },
@@ -446,7 +446,7 @@ window['ITE2026Session'] = {
       type: 'message',
       sender: 'Ellie Wong',
       rank: 'Member',
-      text: '<img src="./assets/ite2026pic6.png" alt="Delivery" width="400"> <br> I have been stucked here a few days,there are some <br> mysterious doors around.',
+      text: '<img src="./assets/ite2026pic6.jpeg" alt="Delivery" width="400"> <br> I have been stucked here a few days,there are some <br> mysterious doors around.',
       delay: 800,
       next: 'Finale3'
     },
