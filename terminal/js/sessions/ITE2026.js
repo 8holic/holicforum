@@ -551,15 +551,23 @@ window['ITE2026Session'] = {
       branches: ['FinalHall1', 'FinalHall2', 'FinalHall3', 'FinalHall4', 'FinalHall5', 'FinalHall6'],
       delay: 500
     },
+    // ---- First set (randomly chosen, all expect answer 2 to proceed) ----
     FinalHall1: {
       type: 'question',
       sender: 'You',
       rank: 'Null',
       question: 'You walk through the door, 9 doors stand before you.',
       branches: {
-        'd4735e3a265e16eee03f59718b9b5d03019c07d8b6c51f90da3a666eec13ab35': 'FinalHall11'
+        'd4735e3a265e16eee03f59718b9b5d03019c07d8b6c51f90da3a666eec13ab35': 'FinalHall11', // 2 (correct)
+        '6b86b273ff34fce19d6b804eff5a3f5747ada4eaa22f1d49c01e52ddb7875b4b': 'FinalRandom', // 1
+        '4e07408562bedb8b60ce05c1decfe3ad16b72230967de01f640b7e4729b49fce': 'FinalRandom', // 3
+        '4b227777d4dd1fc61c6f884f48641d02b4d121d3fd328cb08b5531fcacdabf8a': 'FinalRandom', // 4
+        'ef2d127de37b942baad06145e54b0c619a1f22327b2ebbcfbec78f5564afe39d': 'FinalRandom', // 5
+        'e7f6c011776e8db7cd330b54174fd76f7d0216b612387a5ffcfb81e6f0919683': 'FinalRandom', // 6
+        '7902699be42c8a8e46fbbb4501726517e86b22c56a189f7625a6da49081b2451': 'FinalRandom', // 7
+        '2c624232cdd221771294dfbb310aca000a0df6ac8b66b696d90ef06fdefb64a3': 'FinalRandom', // 8
+        '19581e27de7ced00ff1ce50b2047e7a567c76b1cbaebabe5ef03f7c3017bb5b7': 'FinalRandom'  // 9
       },
-      failNext: 'FinalRandom',
       delay: 1000
     },
     FinalHall2: {
@@ -568,9 +576,16 @@ window['ITE2026Session'] = {
       rank: 'Null',
       question: 'The lights flickers as you walk through the door.',
       branches: {
-        'd4735e3a265e16eee03f59718b9b5d03019c07d8b6c51f90da3a666eec13ab35': 'FinalHall11'
+        'd4735e3a265e16eee03f59718b9b5d03019c07d8b6c51f90da3a666eec13ab35': 'FinalHall11', // 2 (correct)
+        '6b86b273ff34fce19d6b804eff5a3f5747ada4eaa22f1d49c01e52ddb7875b4b': 'FinalRandom',
+        '4e07408562bedb8b60ce05c1decfe3ad16b72230967de01f640b7e4729b49fce': 'FinalRandom',
+        '4b227777d4dd1fc61c6f884f48641d02b4d121d3fd328cb08b5531fcacdabf8a': 'FinalRandom',
+        'ef2d127de37b942baad06145e54b0c619a1f22327b2ebbcfbec78f5564afe39d': 'FinalRandom',
+        'e7f6c011776e8db7cd330b54174fd76f7d0216b612387a5ffcfb81e6f0919683': 'FinalRandom',
+        '7902699be42c8a8e46fbbb4501726517e86b22c56a189f7625a6da49081b2451': 'FinalRandom',
+        '2c624232cdd221771294dfbb310aca000a0df6ac8b66b696d90ef06fdefb64a3': 'FinalRandom',
+        '19581e27de7ced00ff1ce50b2047e7a567c76b1cbaebabe5ef03f7c3017bb5b7': 'FinalRandom'
       },
-      failNext: 'FinalRandom',
       delay: 1000
     },
     FinalHall3: {
@@ -579,9 +594,16 @@ window['ITE2026Session'] = {
       rank: 'Null',
       question: 'Have you been here before? You dont even know.',
       branches: {
-        'd4735e3a265e16eee03f59718b9b5d03019c07d8b6c51f90da3a666eec13ab35': 'FinalHall11'
+        'd4735e3a265e16eee03f59718b9b5d03019c07d8b6c51f90da3a666eec13ab35': 'FinalHall11',
+        '6b86b273ff34fce19d6b804eff5a3f5747ada4eaa22f1d49c01e52ddb7875b4b': 'FinalRandom',
+        '4e07408562bedb8b60ce05c1decfe3ad16b72230967de01f640b7e4729b49fce': 'FinalRandom',
+        '4b227777d4dd1fc61c6f884f48641d02b4d121d3fd328cb08b5531fcacdabf8a': 'FinalRandom',
+        'ef2d127de37b942baad06145e54b0c619a1f22327b2ebbcfbec78f5564afe39d': 'FinalRandom',
+        'e7f6c011776e8db7cd330b54174fd76f7d0216b612387a5ffcfb81e6f0919683': 'FinalRandom',
+        '7902699be42c8a8e46fbbb4501726517e86b22c56a189f7625a6da49081b2451': 'FinalRandom',
+        '2c624232cdd221771294dfbb310aca000a0df6ac8b66b696d90ef06fdefb64a3': 'FinalRandom',
+        '19581e27de7ced00ff1ce50b2047e7a567c76b1cbaebabe5ef03f7c3017bb5b7': 'FinalRandom'
       },
-      failNext: 'FinalRandom',
       delay: 1000
     },
     FinalHall4: {
@@ -590,9 +612,16 @@ window['ITE2026Session'] = {
       rank: 'Null',
       question: 'You walk past the door with Ellie...you will make it out right?',
       branches: {
-        'd4735e3a265e16eee03f59718b9b5d03019c07d8b6c51f90da3a666eec13ab35': 'FinalHall11'
+        'd4735e3a265e16eee03f59718b9b5d03019c07d8b6c51f90da3a666eec13ab35': 'FinalHall11',
+        '6b86b273ff34fce19d6b804eff5a3f5747ada4eaa22f1d49c01e52ddb7875b4b': 'FinalRandom',
+        '4e07408562bedb8b60ce05c1decfe3ad16b72230967de01f640b7e4729b49fce': 'FinalRandom',
+        '4b227777d4dd1fc61c6f884f48641d02b4d121d3fd328cb08b5531fcacdabf8a': 'FinalRandom',
+        'ef2d127de37b942baad06145e54b0c619a1f22327b2ebbcfbec78f5564afe39d': 'FinalRandom',
+        'e7f6c011776e8db7cd330b54174fd76f7d0216b612387a5ffcfb81e6f0919683': 'FinalRandom',
+        '7902699be42c8a8e46fbbb4501726517e86b22c56a189f7625a6da49081b2451': 'FinalRandom',
+        '2c624232cdd221771294dfbb310aca000a0df6ac8b66b696d90ef06fdefb64a3': 'FinalRandom',
+        '19581e27de7ced00ff1ce50b2047e7a567c76b1cbaebabe5ef03f7c3017bb5b7': 'FinalRandom'
       },
-      failNext: 'FinalRandom',
       delay: 1000
     },
     FinalHall5: {
@@ -601,9 +630,16 @@ window['ITE2026Session'] = {
       rank: 'Null',
       question: 'You go through yet another door,despite that 9 door stands before you again.',
       branches: {
-        'd4735e3a265e16eee03f59718b9b5d03019c07d8b6c51f90da3a666eec13ab35': 'FinalHall11'
+        'd4735e3a265e16eee03f59718b9b5d03019c07d8b6c51f90da3a666eec13ab35': 'FinalHall11',
+        '6b86b273ff34fce19d6b804eff5a3f5747ada4eaa22f1d49c01e52ddb7875b4b': 'FinalRandom',
+        '4e07408562bedb8b60ce05c1decfe3ad16b72230967de01f640b7e4729b49fce': 'FinalRandom',
+        '4b227777d4dd1fc61c6f884f48641d02b4d121d3fd328cb08b5531fcacdabf8a': 'FinalRandom',
+        'ef2d127de37b942baad06145e54b0c619a1f22327b2ebbcfbec78f5564afe39d': 'FinalRandom',
+        'e7f6c011776e8db7cd330b54174fd76f7d0216b612387a5ffcfb81e6f0919683': 'FinalRandom',
+        '7902699be42c8a8e46fbbb4501726517e86b22c56a189f7625a6da49081b2451': 'FinalRandom',
+        '2c624232cdd221771294dfbb310aca000a0df6ac8b66b696d90ef06fdefb64a3': 'FinalRandom',
+        '19581e27de7ced00ff1ce50b2047e7a567c76b1cbaebabe5ef03f7c3017bb5b7': 'FinalRandom'
       },
-      failNext: 'FinalRandom',
       delay: 1000
     },
     FinalHall6: {
@@ -612,33 +648,53 @@ window['ITE2026Session'] = {
       rank: 'Null',
       question: 'You think you are going in circles.',
       branches: {
-        'd4735e3a265e16eee03f59718b9b5d03019c07d8b6c51f90da3a666eec13ab35': 'FinalHall11'
+        'd4735e3a265e16eee03f59718b9b5d03019c07d8b6c51f90da3a666eec13ab35': 'FinalHall11',
+        '6b86b273ff34fce19d6b804eff5a3f5747ada4eaa22f1d49c01e52ddb7875b4b': 'FinalRandom',
+        '4e07408562bedb8b60ce05c1decfe3ad16b72230967de01f640b7e4729b49fce': 'FinalRandom',
+        '4b227777d4dd1fc61c6f884f48641d02b4d121d3fd328cb08b5531fcacdabf8a': 'FinalRandom',
+        'ef2d127de37b942baad06145e54b0c619a1f22327b2ebbcfbec78f5564afe39d': 'FinalRandom',
+        'e7f6c011776e8db7cd330b54174fd76f7d0216b612387a5ffcfb81e6f0919683': 'FinalRandom',
+        '7902699be42c8a8e46fbbb4501726517e86b22c56a189f7625a6da49081b2451': 'FinalRandom',
+        '2c624232cdd221771294dfbb310aca000a0df6ac8b66b696d90ef06fdefb64a3': 'FinalRandom',
+        '19581e27de7ced00ff1ce50b2047e7a567c76b1cbaebabe5ef03f7c3017bb5b7': 'FinalRandom'
       },
-      failNext: 'FinalRandom',
       delay: 1000
     },
-
+    // ---- Second set (sequential path) ----
     FinalHall11: {
       type: 'question',
       sender: 'You',
       rank: 'Null',
-      question: 'You think you are going in circles.',
+      question: 'You think you are going in circles. Or are you?',
       branches: {
-        'd4735e3a265e16eee03f59718b9b5d03019c07d8b6c51f90da3a666eec13ab35': 'FinalHall12'
+        '4b227777d4dd1fc61c6f884f48641d02b4d121d3fd328cb08b5531fcacdabf8a': 'FinalHall12', // 4 (correct)
+        '6b86b273ff34fce19d6b804eff5a3f5747ada4eaa22f1d49c01e52ddb7875b4b': 'FinalRandom',
+        'd4735e3a265e16eee03f59718b9b5d03019c07d8b6c51f90da3a666eec13ab35': 'FinalRandom',
+        '4e07408562bedb8b60ce05c1decfe3ad16b72230967de01f640b7e4729b49fce': 'FinalRandom',
+        'ef2d127de37b942baad06145e54b0c619a1f22327b2ebbcfbec78f5564afe39d': 'FinalRandom',
+        'e7f6c011776e8db7cd330b54174fd76f7d0216b612387a5ffcfb81e6f0919683': 'FinalRandom',
+        '7902699be42c8a8e46fbbb4501726517e86b22c56a189f7625a6da49081b2451': 'FinalRandom',
+        '2c624232cdd221771294dfbb310aca000a0df6ac8b66b696d90ef06fdefb64a3': 'FinalRandom',
+        '19581e27de7ced00ff1ce50b2047e7a567c76b1cbaebabe5ef03f7c3017bb5b7': 'FinalRandom'
       },
-      failNext: 'FinalRandom',
       delay: 1000
     },
-
     FinalHall12: {
       type: 'question',
       sender: 'You',
       rank: 'Null',
       question: 'You go through yet another door,despite that 9 door stands before you again.',
       branches: {
-        '4b227777d4dd1fc61c6f884f48641d02b4d121d3fd328cb08b5531fcacdabf8a': 'FinalHall13'
+        '4e07408562bedb8b60ce05c1decfe3ad16b72230967de01f640b7e4729b49fce': 'FinalHall13', // 3 (correct)
+        '6b86b273ff34fce19d6b804eff5a3f5747ada4eaa22f1d49c01e52ddb7875b4b': 'FinalRandom',
+        'd4735e3a265e16eee03f59718b9b5d03019c07d8b6c51f90da3a666eec13ab35': 'FinalRandom',
+        '4b227777d4dd1fc61c6f884f48641d02b4d121d3fd328cb08b5531fcacdabf8a': 'FinalRandom',
+        'ef2d127de37b942baad06145e54b0c619a1f22327b2ebbcfbec78f5564afe39d': 'FinalRandom',
+        'e7f6c011776e8db7cd330b54174fd76f7d0216b612387a5ffcfb81e6f0919683': 'FinalRandom',
+        '7902699be42c8a8e46fbbb4501726517e86b22c56a189f7625a6da49081b2451': 'FinalRandom',
+        '2c624232cdd221771294dfbb310aca000a0df6ac8b66b696d90ef06fdefb64a3': 'FinalRandom',
+        '19581e27de7ced00ff1ce50b2047e7a567c76b1cbaebabe5ef03f7c3017bb5b7': 'FinalRandom'
       },
-      failNext: 'FinalRandom',
       delay: 1000
     },
     FinalHall13: {
@@ -647,9 +703,16 @@ window['ITE2026Session'] = {
       rank: 'Null',
       question: 'You walk past the door with Ellie...you will make it out right?',
       branches: {
-        '4e07408562bedb8b60ce05c1decfe3ad16b72230967de01f640b7e4729b49fce': 'FinalHall14'
+        'e7f6c011776e8db7cd330b54174fd76f7d0216b612387a5ffcfb81e6f0919683': 'FinalHall14', // 6 (correct)
+        '6b86b273ff34fce19d6b804eff5a3f5747ada4eaa22f1d49c01e52ddb7875b4b': 'FinalRandom',
+        'd4735e3a265e16eee03f59718b9b5d03019c07d8b6c51f90da3a666eec13ab35': 'FinalRandom',
+        '4e07408562bedb8b60ce05c1decfe3ad16b72230967de01f640b7e4729b49fce': 'FinalRandom',
+        '4b227777d4dd1fc61c6f884f48641d02b4d121d3fd328cb08b5531fcacdabf8a': 'FinalRandom',
+        'ef2d127de37b942baad06145e54b0c619a1f22327b2ebbcfbec78f5564afe39d': 'FinalRandom',
+        '7902699be42c8a8e46fbbb4501726517e86b22c56a189f7625a6da49081b2451': 'FinalRandom',
+        '2c624232cdd221771294dfbb310aca000a0df6ac8b66b696d90ef06fdefb64a3': 'FinalRandom',
+        '19581e27de7ced00ff1ce50b2047e7a567c76b1cbaebabe5ef03f7c3017bb5b7': 'FinalRandom'
       },
-      failNext: 'FinalRandom',
       delay: 1000
     },
     FinalHall14: {
@@ -658,9 +721,16 @@ window['ITE2026Session'] = {
       rank: 'Null',
       question: 'You go through yet another door,despite that 9 door stands before you again.',
       branches: {
-        'e7f6c011776e8db7cd330b54174fd76f7d0216b612387a5ffcfb81e6f0919683': 'FinalHall15'
+        'ef2d127de37b942baad06145e54b0c619a1f22327b2ebbcfbec78f5564afe39d': 'FinalHall15', // 5 (correct)
+        '6b86b273ff34fce19d6b804eff5a3f5747ada4eaa22f1d49c01e52ddb7875b4b': 'FinalRandom',
+        'd4735e3a265e16eee03f59718b9b5d03019c07d8b6c51f90da3a666eec13ab35': 'FinalRandom',
+        '4e07408562bedb8b60ce05c1decfe3ad16b72230967de01f640b7e4729b49fce': 'FinalRandom',
+        '4b227777d4dd1fc61c6f884f48641d02b4d121d3fd328cb08b5531fcacdabf8a': 'FinalRandom',
+        'e7f6c011776e8db7cd330b54174fd76f7d0216b612387a5ffcfb81e6f0919683': 'FinalRandom',
+        '7902699be42c8a8e46fbbb4501726517e86b22c56a189f7625a6da49081b2451': 'FinalRandom',
+        '2c624232cdd221771294dfbb310aca000a0df6ac8b66b696d90ef06fdefb64a3': 'FinalRandom',
+        '19581e27de7ced00ff1ce50b2047e7a567c76b1cbaebabe5ef03f7c3017bb5b7': 'FinalRandom'
       },
-      failNext: 'FinalRandom',
       delay: 1000
     },
     FinalHall15: {
@@ -669,9 +739,16 @@ window['ITE2026Session'] = {
       rank: 'Null',
       question: 'The lights flickers as you walk through the door.',
       branches: {
-        'ef2d127de37b942baad06145e54b0c619a1f22327b2ebbcfbec78f5564afe39d': 'FinalHall16'
+        '7902699be42c8a8e46fbbb4501726517e86b22c56a189f7625a6da49081b2451': 'FinalHall16', // 7 (correct)
+        '6b86b273ff34fce19d6b804eff5a3f5747ada4eaa22f1d49c01e52ddb7875b4b': 'FinalRandom',
+        'd4735e3a265e16eee03f59718b9b5d03019c07d8b6c51f90da3a666eec13ab35': 'FinalRandom',
+        '4e07408562bedb8b60ce05c1decfe3ad16b72230967de01f640b7e4729b49fce': 'FinalRandom',
+        '4b227777d4dd1fc61c6f884f48641d02b4d121d3fd328cb08b5531fcacdabf8a': 'FinalRandom',
+        'ef2d127de37b942baad06145e54b0c619a1f22327b2ebbcfbec78f5564afe39d': 'FinalRandom',
+        'e7f6c011776e8db7cd330b54174fd76f7d0216b612387a5ffcfb81e6f0919683': 'FinalRandom',
+        '2c624232cdd221771294dfbb310aca000a0df6ac8b66b696d90ef06fdefb64a3': 'FinalRandom',
+        '19581e27de7ced00ff1ce50b2047e7a567c76b1cbaebabe5ef03f7c3017bb5b7': 'FinalRandom'
       },
-      failNext: 'FinalRandom',
       delay: 1000
     },
     FinalHall16: {
@@ -680,9 +757,16 @@ window['ITE2026Session'] = {
       rank: 'Null',
       question: 'You walk past the door with Ellie...you will make it out right?',
       branches: {
-        '7902699be42c8a8e46fbbb4501726517e86b22c56a189f7625a6da49081b2451': 'FinalHall17'
+        '19581e27de7ced00ff1ce50b2047e7a567c76b1cbaebabe5ef03f7c3017bb5b7': 'FinalHall17', // 9 (correct)
+        '6b86b273ff34fce19d6b804eff5a3f5747ada4eaa22f1d49c01e52ddb7875b4b': 'FinalRandom',
+        'd4735e3a265e16eee03f59718b9b5d03019c07d8b6c51f90da3a666eec13ab35': 'FinalRandom',
+        '4e07408562bedb8b60ce05c1decfe3ad16b72230967de01f640b7e4729b49fce': 'FinalRandom',
+        '4b227777d4dd1fc61c6f884f48641d02b4d121d3fd328cb08b5531fcacdabf8a': 'FinalRandom',
+        'ef2d127de37b942baad06145e54b0c619a1f22327b2ebbcfbec78f5564afe39d': 'FinalRandom',
+        'e7f6c011776e8db7cd330b54174fd76f7d0216b612387a5ffcfb81e6f0919683': 'FinalRandom',
+        '7902699be42c8a8e46fbbb4501726517e86b22c56a189f7625a6da49081b2451': 'FinalRandom',
+        '2c624232cdd221771294dfbb310aca000a0df6ac8b66b696d90ef06fdefb64a3': 'FinalRandom'
       },
-      failNext: 'FinalRandom',
       delay: 1000
     },
     FinalHall17: {
@@ -691,42 +775,34 @@ window['ITE2026Session'] = {
       rank: 'Null',
       question: 'Have you been here before? You dont even know.',
       branches: {
-        '19581e27de7ced00ff1ce50b2047e7a567c76b1cbaebabe5ef03f7c3017bb5b7': 'FinalHall18'
+        '2c624232cdd221771294dfbb310aca000a0df6ac8b66b696d90ef06fdefb64a3': 'FinalHall18', // 8 (correct)
+        '6b86b273ff34fce19d6b804eff5a3f5747ada4eaa22f1d49c01e52ddb7875b4b': 'FinalRandom',
+        'd4735e3a265e16eee03f59718b9b5d03019c07d8b6c51f90da3a666eec13ab35': 'FinalRandom',
+        '4e07408562bedb8b60ce05c1decfe3ad16b72230967de01f640b7e4729b49fce': 'FinalRandom',
+        '4b227777d4dd1fc61c6f884f48641d02b4d121d3fd328cb08b5531fcacdabf8a': 'FinalRandom',
+        'ef2d127de37b942baad06145e54b0c619a1f22327b2ebbcfbec78f5564afe39d': 'FinalRandom',
+        'e7f6c011776e8db7cd330b54174fd76f7d0216b612387a5ffcfb81e6f0919683': 'FinalRandom',
+        '7902699be42c8a8e46fbbb4501726517e86b22c56a189f7625a6da49081b2451': 'FinalRandom',
+        '19581e27de7ced00ff1ce50b2047e7a567c76b1cbaebabe5ef03f7c3017bb5b7': 'FinalRandom'
       },
-      failNext: 'FinalRandom',
       delay: 1000
     },
     FinalHall18: {
       type: 'question',
       sender: 'You',
       rank: 'Null',
-      question: 'This is the end...you can feel it,just two more.',
+      question: 'This is the end...you can feel it, just one more.',
       branches: {
-        '2c624232cdd221771294dfbb310aca000a0df6ac8b66b696d90ef06fdefb64a3': 'FinalHall19'
+        '6b86b273ff34fce19d6b804eff5a3f5747ada4eaa22f1d49c01e52ddb7875b4b': 'FinalSuccess1', // 1 (correct)
+        'd4735e3a265e16eee03f59718b9b5d03019c07d8b6c51f90da3a666eec13ab35': 'FinalRandom',
+        '4e07408562bedb8b60ce05c1decfe3ad16b72230967de01f640b7e4729b49fce': 'FinalRandom',
+        '4b227777d4dd1fc61c6f884f48641d02b4d121d3fd328cb08b5531fcacdabf8a': 'FinalRandom',
+        'ef2d127de37b942baad06145e54b0c619a1f22327b2ebbcfbec78f5564afe39d': 'FinalRandom',
+        'e7f6c011776e8db7cd330b54174fd76f7d0216b612387a5ffcfb81e6f0919683': 'FinalRandom',
+        '7902699be42c8a8e46fbbb4501726517e86b22c56a189f7625a6da49081b2451': 'FinalRandom',
+        '2c624232cdd221771294dfbb310aca000a0df6ac8b66b696d90ef06fdefb64a3': 'FinalRandom',
+        '19581e27de7ced00ff1ce50b2047e7a567c76b1cbaebabe5ef03f7c3017bb5b7': 'FinalRandom'
       },
-      failNext: 'FinalRandom',
-      delay: 1000
-    },
-    FinalHall19: {
-      type: 'question',
-      sender: 'You',
-      rank: 'Null',
-      question: 'You think you are going in circles',
-      branches: {
-        '4ec9599fc203d176a301536c2e091a19bc852759b255bd6818810a42c5fed14a': 'FinalHall20'
-      },
-      failNext: 'FinalRandom',
-      delay: 1000
-    },
-    FinalHall20: {
-      type: 'question',
-      sender: 'You',
-      rank: 'Null',
-      question: 'This is the final one, you can feel it',
-      branches: {
-        '6b86b273ff34fce19d6b804eff5a3f5747ada4eaa22f1d49c01e52ddb7875b4b': 'FinalSuccess1'
-      },
-      failNext: 'FinalRandom',
       delay: 1000
     },
     FinalSuccess1: {
@@ -741,7 +817,7 @@ window['ITE2026Session'] = {
       type: 'message',
       sender: 'You',
       rank: 'Null',
-      text: 'And with that,you find yourself back in the elevator. You are back!',
+      text: 'And with that, you find yourself back in the elevator. You are back! Thanks for playing!',
       delay: 500,
       next: null
     }
