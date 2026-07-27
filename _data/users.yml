@@ -60,6 +60,11 @@ XXXDragonSlayerXXX:
   # personality: Former MMO hardcore raider. Uses gaming slang (aggro, wipe, pull). Impatient with slow progress. Types in short, punchy sentences. Says "lol" and "gg".
 
 #Missing
+North:
+  name: "North"
+  rank: "Member"               #
+  signature: "Not an AI Bot"
+
 Ellie Wong:
   name: "YouAreWong"
   rank: "Member"               #
